@@ -12,7 +12,7 @@ $JBNAppPath = "C:\Program Files\Mozilla Firefox\firefox.exe"
 if (test-path -path $JBNAppPath) {
     Write-Host "Firefox is found at $JBNAppPath - add $env:COMPUTERNAME to group"
     # Call the webhook
-    $JBNbody = ConvertTo-Json -InputObject $params  
+    $JBNbody = ConvertTo-Json -InputObject $JBNparams  
     $JBNresponse = Invoke-WebRequest -Method Post -Uri $JBNwebhookURI -Body $JBNbody -UseBasicParsing 
 } else {
     Write-Host "Firefox is not found at $JBNAppPath. Do not add $env:COMPUTERNAME to group"
